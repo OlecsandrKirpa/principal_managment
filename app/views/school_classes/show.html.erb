@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @school_class.year %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @school_class.section %>
+</p>
+
+<p>
+  <strong>Students:</strong>
+  <%= @school_class.students %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @school_class.room_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @school_class.status_id %>
+</p>
+
+<%= link_to 'Edit', edit_school_class_path(@school_class) %> |
+<%= link_to 'Back', school_classes_path %>

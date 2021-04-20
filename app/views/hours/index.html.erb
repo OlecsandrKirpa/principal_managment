@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>School class</th>
+      <th>Room</th>
+      <th>Teacher</th>
+      <th>Date</th>
+      <th>Schedule</th>
+      <th>Begin</th>
+      <th>End</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hours.each do |hour| %>
+      <tr>
+        <td><%= hour.school_class_id %></td>
+        <td><%= hour.room_id %></td>
+        <td><%= hour.teacher_id %></td>
+        <td><%= hour.date %></td>
+        <td><%= hour.schedule_id %></td>
+        <td><%= hour.begin %></td>
+        <td><%= hour.end %></td>
+        <td><%= link_to 'Show', hour %></td>
+        <td><%= link_to 'Edit', edit_hour_path(hour) %></td>
+        <td><%= link_to 'Destroy', hour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hour', new_hour_path %>

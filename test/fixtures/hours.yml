@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  school_class_id: 1
+  room_id: 1
+  teacher_id: 1
+  date: 2021-04-20
+  schedule_id: 1
+  begin: 2021-04-20 15:44:55
+  end: 2021-04-20 15:44:55
+
+two:
+  school_class_id: 1
+  room_id: 1
+  teacher_id: 1
+  date: 2021-04-20
+  schedule_id: 1
+  begin: 2021-04-20 15:44:55
+  end: 2021-04-20 15:44:55

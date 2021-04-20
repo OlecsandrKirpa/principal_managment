@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <!-- TODO aggiungere active dinamico-->
+          <a class="nav-link" href="<%= rooms_path %>">Aule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= teachers_path %>">Insegnanti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= school_classes_path %>">Classi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= reservations_path %>">Prenotazioni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= hours_path %>">Ore scolastiche</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= statuses_path %>">-Status</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

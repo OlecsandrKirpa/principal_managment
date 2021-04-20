@@ -1,0 +1,42 @@
+<%= form_with(model: school_class) do |form| %>
+  <% if school_class.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(school_class.errors.count, "error") %> prohibited this school_class from being saved:</h2>
+
+      <ul>
+        <% school_class.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :section %>
+    <%= form.text_field :section %>
+  </div>
+
+  <div class="field">
+    <%= form.label :students %>
+    <%= form.number_field :students %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_id %>
+    <%= form.number_field :room_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status_id %>
+    <%= form.number_field :status_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
