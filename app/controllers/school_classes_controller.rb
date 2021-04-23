@@ -3,7 +3,24 @@ class SchoolClassesController < ApplicationController
 
   # GET /school_classes or /school_classes.json
   def index
-    @school_classes = SchoolClass.all
+    @school_classes = SchoolClass.order("id")
+
+    columns = ["section", "students"]
+    columns.push(concatColumns(columns[0], columns[1]))
+    columns.push(concatColumns(columns[1], columns[2]))
+    
+    # columns.push(concatColumns(columns[1], columns[2]))
+    # columns.push(concatColumns(columns[2], columns[1]))
+
+    if params[:query].present? && params[:query].strip != ""
+      @school_classes = @school_classes.where(renderQuery(columns, params[:query]))
+    end
+
+    respond_to do |format|
+      format.html
+      format.json {render json: {items: @school_classes} }
+    end
+
   end
 
   # GET /school_classes/1 or /school_classes/1.json

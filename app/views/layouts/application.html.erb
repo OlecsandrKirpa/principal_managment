@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PrincipalManagment</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>PrincipalManagment</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
   <%= render 'layouts/header' %>
   <div class="container">
     <%= yield %>
 
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </div>
+  <script>
+  $(document).ready(function () {
 
-  </body>
+
+    // Attiva tutti i select come select2 con la classe artificialSelect2
+    let allSelect2 = $('.artificialSelect2');
+    console.log(allSelect2)
+
+    if(allSelect2.length >= 1)
+    for(let i = 0; i<allSelect2.length; i++){
+      $("#"+$(allSelect2[i]).attr("id")).addSelect2();
+    }
+  })
+  </script>
+</body>
+
 </html>

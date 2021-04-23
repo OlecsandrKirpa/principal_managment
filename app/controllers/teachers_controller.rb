@@ -3,7 +3,22 @@ class TeachersController < ApplicationController
 
   # GET /teachers or /teachers.json
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.order("last_name")
+
+    columns = [
+      {"column" => "first_name", "comparator" => "ILIKE"},
+      {"column" => "last_name", "comparator" => "ILIKE"}
+    ]
+
+    
+
+    # columns.push(concatColumns(columns[0], columns[1]))
+    # columns.push(concatColumns(columns[1], columns[0]))
+
+    if params[:query].present? && params[:query].strip != ""
+      @teachers = Teacher.where(renderQuery(columns, params[:query])) 
+    end
+    render json: {items: @teachers}
   end
 
   # GET /teachers/1 or /teachers/1.json

@@ -4,9 +4,14 @@ class RoomsController < ApplicationController
   # GET /rooms or /rooms.json
   def index
     @rooms = Room.all
+    
+    if params[:query].present? && params[:query].strip != ""
+      @rooms = @rooms.where(renderQuery(["name"], params[:query]))
+    end
+
     respond_to do |format|
       format.html
-      format.json {render json: @rooms }
+      format.json {render json: {items: @rooms} }
     end
   end
 

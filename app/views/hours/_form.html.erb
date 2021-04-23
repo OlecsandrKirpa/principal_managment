@@ -1,52 +1,100 @@
 <%= form_with(model: hour) do |form| %>
-  <% if hour.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(hour.errors.count, "error") %> prohibited this hour from being saved:</h2>
+<% if hour.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(hour.errors.count, "error") %> prohibited this hour from being saved:</h2>
 
-      <ul>
-        <% hour.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :school_class_id %>
+  <ul>
+    <% hour.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="form-group">
+  <%= form.label :school_class_id, class:"form-label" %>
+  <div class="input-group">
     <%= form.number_field :school_class_id %>
+    <select id="select2-hour_school_class_id" class="artificialSelect2 fillIntoRealTarget" real-input-id="school_class_id" new-element-link="<%= new_school_class_path %>" 
+    placeholder-select2="Seleziona la classe relativa alla lezione" link-request="<%= school_classes_path %>" no-result-message="Aggiungi classe" select2-selector="year section"></select>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :room_id %>
-    <%= form.number_field :room_id %>
+<div class="form-group">
+  <%= form.label :room_id, class:"form-label" %>
+  <div class="input-group">
+    <%= form.hidden_field :room_id %>
+    <select id="select2-hour_room_id" class="artificialSelect2 fillIntoRealTarget" real-input-id="hour_room_id" new-element-link="<%= new_room_path %>" 
+    placeholder-select2="Seleziona l'aula della lezione" link-request="<%= rooms_path %>" no-result-message="Aggiungi aula" select2-selector="name"></select>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :teacher_id %>
-    <%= form.number_field :teacher_id %>
+<div class="form-group">
+  <%= form.label :teacher_id, class:"form-label" %>
+  <div class="input-group">
+    <select id="select2-hour_teacher_id" class="artificialSelect2 fillIntoRealTarget" real-input-id="hour_teacher_id" new-element-link="<%= new_teacher_path %>" 
+    placeholder-select2="Seleziona l'insegnante" link-request="<%= teachers_path %>" no-result-message="Aggiungi insegnante" select2-selector="first_name last_name"></select>
+      <%= form.hidden_field :teacher_id %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :date %>
+<div class="form-group">
+  <%= form.label :date, class:"form-label" %>
+  <div class="input-group">
     <%= form.date_select :date %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :schedule_id %>
+<div class="form-group">
+  <%= form.label :schedule_id, class:"form-label" %>
+  <div class="input-group">
     <%= form.number_field :schedule_id %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :begin %>
+<div class="d-none">
+  <%= form.label :begin, class:"form-label" %>
+  <div class="input-group">
     <%= form.time_select :begin %>
   </div>
 
-  <div class="field">
-    <%= form.label :end %>
+  <%= form.label :end, class:"form-label" %>
+  <div class="input-group">
     <%= form.time_select :end %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="row my-2 fillInOriginalInput">
+
+    <div class="col col-6 mb-2">
+      <div class="input-group">
+        <input type="number" target="hour_begin_4i" need-validation="true" placeholder="Ora d'inizio" min=0 max="24" step=1>
+        <input type="number" target="hour_begin_5i" need-validation="true" placeholder="Minuti d'inizio" min=0 max="59" step="1">
+      </div>
+    </div>
+
+    <div class="col col-6 mb-2">
+      <div class="input-group">
+        <input type="number" target="hour_end_4i" min=0 max=24 step=1 need-validation="true" placeholder="Ora di fine">
+        <input type="number" target="hour_end_5i" min=0 max=59 step=1 need-validation="true" placeholder="Minuto di fine">
+      </div>
+    </div>
+
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary" %>
   </div>
+</div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $('input').addClass("form-control");
+    $('select').addClass("form-control");
+    let input = $('.fillInOriginalInput').find("input[type=number]");
+
+    input.loadValueToRealInputOnChange();
+
+    $('.fillIntoRealTarget').loadValueToRealInputOnChange();
+  })
+</script>
